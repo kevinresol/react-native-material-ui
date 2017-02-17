@@ -69,6 +69,7 @@ const propTypes = {
         leftElement: IconToggle.propTypes.style,
         centerElementContainer: Animated.View.propTypes.style,
         titleText: Text.propTypes.style,
+        searchableText: TextInput.propTypes.style,
         rightElementContainer: View.propTypes.style,
         rightElement: IconToggle.propTypes.style,
     }),
@@ -190,6 +191,11 @@ function getStyles(props, context, state) {
             toolbar.titleText,
             isSearchActive && toolbarSearchActive.titleText,
             props.style.titleText,
+        ],
+        searchableText: [
+            toolbar.titleText,
+            isSearchActive && toolbarSearchActive.titleText,
+            props.style.searchableText,
         ],
         rightElementContainer: [
             toolbar.rightElementContainer,
@@ -351,7 +357,7 @@ class Toolbar extends PureComponent {
                     onChangeText={this.onSearchTextChanged}
                     onSubmitEditing={searchable.onSubmitEditing}
                     placeholder={searchable.placeholder}
-                    style={style.titleText}
+                    style={style.searchableText}
                     underlineColorAndroid="transparent"
                     value={this.state.searchValue}
                 />
